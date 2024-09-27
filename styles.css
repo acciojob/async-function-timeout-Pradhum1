@@ -1,4 +1,4 @@
-// Async function to handle the delay and output
+
 async function displayMessageWithDelay() {
     const textInput = document.getElementById('text').value;
     const delayInput = document.getElementById('delay').value;
@@ -16,7 +16,7 @@ async function displayMessageWithDelay() {
             // Display the user-provided text after the delay
             outputDiv.textContent = textInput;
             resolve();
-        }, delay);
+        }, delay+200);
     });
 }
 
