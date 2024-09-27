@@ -1,1 +1,26 @@
-/*  your css code here. If applicable */
+// Function that returns a promise and resolves after a given delay
+function delayPromise(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Async function to handle the delay and output
+async function displayMessageWithDelay() {
+    const textInput = document.getElementById('text').value;
+    const delayInput = document.getElementById('delay').value;
+    const outputDiv = document.getElementById('output');
+
+    // Convert delayInput to a number and use a default of 1000ms if no value is provided
+    const delay = parseInt(delayInput) || 1000;
+
+    // Clear previous output
+    outputDiv.textContent = 'Waiting...';
+
+    // Wait for the specified delay
+    await delayPromise(delay);
+
+    // Display the user-provided text after the delay
+    outputDiv.textContent = textInput;
+}
+
+// Add event listener to the button
+document.getElementById('btn').addEventListener('click', displayMessageWithDelay);
