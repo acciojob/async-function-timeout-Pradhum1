@@ -1,8 +1,3 @@
-// Function that returns a promise and resolves after a given delay
-function delayPromise(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // Async function to handle the delay and output
 async function displayMessageWithDelay() {
     const textInput = document.getElementById('text').value;
@@ -13,13 +8,16 @@ async function displayMessageWithDelay() {
     const delay = parseInt(delayInput) || 1000;
 
     // Clear previous output
-   // outputDiv.textContent = 'Waiting...';
+    outputDiv.textContent = '';
 
     // Wait for the specified delay
-    await delayPromise(delay);
-
-    // Display the user-provided text after the delay
-    outputDiv.textContent = textInput;
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            // Display the user-provided text after the delay
+            outputDiv.textContent = textInput;
+            resolve();
+        }, delay);
+    });
 }
 
 // Add event listener to the button
