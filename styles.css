@@ -13,7 +13,7 @@ async function displayMessageWithDelay() {
     const delay = parseInt(delayInput) || 1000;
 
     // Clear previous output
-    outputDiv.textContent = 'Waiting...';
+   // outputDiv.textContent = 'Waiting...';
 
     // Wait for the specified delay
     await delayPromise(delay);
